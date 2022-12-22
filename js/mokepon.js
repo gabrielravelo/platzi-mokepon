@@ -17,7 +17,7 @@ const sectionMensajes = document.getElementById('resultado')
 const ataquesDelJugador = document.getElementById('ataques-del-jugador')
 const ataquesDelEnemigo = document.getElementById('ataques-del-enemigo')
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas')
-const tarjetasAtaque = document.getElementById('tarjetas-ataque')
+const contenedorAtaques = document.getElementById('contenedorAtaques')
 
 
 let mokepones = []
@@ -28,9 +28,10 @@ let inputHipodoge
 let inputCapipepo
 let inputRatigueya
 let mascotaJugador
+let ataquesMokepon
 let botonFuego
-let botonTierra
 let botonAgua
+let botonTierra
 let vidasJugador = 3
 let vidasEnemigo = 3
 
@@ -133,16 +134,17 @@ function extraerAtaques(mascotaJugador) {
 
 function mostrarAtaques(ataques) {
     ataques.forEach( (ataque) => {
-        ataqueMokepon = `
+        ataquesMokepon = `
         <button id="${ataque.id}" class="boton-de-ataque">${ataque.nombre}</button>
         `
-        tarjetasAtaque.innerHTML += ataqueMokepon
+        contenedorAtaques.innerHTML += ataquesMokepon
 
     })
 
     botonFuego = document.getElementById('boton-fuego')
     botonAgua = document.getElementById('boton-agua')
     botonTierra = document.getElementById('boton-tierra')
+    // INICIO DE EVENTOS DE CLICKS DINAMICOS
 
     botonFuego.addEventListener('click', ataqueFuego)
     
