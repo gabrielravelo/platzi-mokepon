@@ -33,6 +33,8 @@ let ataquesMokeponEnemigo
 let botonFuego
 let botonAgua
 let botonTierra
+let indexAtaqueJugador
+let indexAtaqueEnemigo
 let botones = []
 let vidasJugador = 3
 let vidasEnemigo = 3
@@ -192,31 +194,48 @@ function ataqueAleatorioEnemigo() {
         ataqueEnemigo.push('TIERRA')
     }
     console.log(ataqueEnemigo)
-    combate()
+    iniciarPelea();
+}
+
+function iniciarPelea() {
+    if(ataqueJugador.length === 5) {
+        combate()
+    }
+}
+
+function indexAmbosOponentes(jugador, enemigo) {
+    indexAtaqueJugador = ataqueJugador[jugador];
+    indexAtaqueEnemigo = ataqueEnemigo[enemigo];
 }
 
 function combate() {
     
-    
-    if(ataqueEnemigo == ataqueJugador) {
-        crearMensaje("EMPATE")
-    } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
-        crearMensaje("GANASTE")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    } else if(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
-        crearMensaje("GANASTE")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    } else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
-        crearMensaje("GANASTE")
-        vidasEnemigo--
-        spanVidasEnemigo.innerHTML = vidasEnemigo
-    } else {
-        crearMensaje("PERDISTE")
-        vidasJugador--
-        spanVidasJugador.innerHTML = vidasJugador
+    for (let i = 0; i < ataqueJugador.length; i++) {
+        if(ataqueJugador[i] === ataqueEnemigo[i]) {
+            indexAmbosOponentes(i, i)
+            crearMensaje("EMPATE")
+        }
     }
+
+    // if(ataqueEnemigo == ataqueJugador) {
+    //     crearMensaje("EMPATE")
+    // } else if(ataqueJugador == 'FUEGO' && ataqueEnemigo == 'TIERRA') {
+    //     crearMensaje("GANASTE")
+    //     vidasEnemigo--
+    //     spanVidasEnemigo.innerHTML = vidasEnemigo
+    // } else if(ataqueJugador == 'AGUA' && ataqueEnemigo == 'FUEGO') {
+    //     crearMensaje("GANASTE")
+    //     vidasEnemigo--
+    //     spanVidasEnemigo.innerHTML = vidasEnemigo
+    // } else if(ataqueJugador == 'TIERRA' && ataqueEnemigo == 'AGUA') {
+    //     crearMensaje("GANASTE")
+    //     vidasEnemigo--
+    //     spanVidasEnemigo.innerHTML = vidasEnemigo
+    // } else {
+    //     crearMensaje("PERDISTE")
+    //     vidasJugador--
+    //     spanVidasJugador.innerHTML = vidasJugador
+    // }
 
     revisarVidas()
 }
@@ -236,8 +255,8 @@ function crearMensaje(resultado) {
     let nuevoAtaqueDelEnemigo = document.createElement('p')
 
     sectionMensajes.innerHTML = resultado
-    nuevoAtaqueDelJugador.innerHTML = ataqueJugador
-    nuevoAtaqueDelEnemigo.innerHTML = ataqueEnemigo
+    nuevoAtaqueDelJugador.innerHTML = indexAtaqueJugador
+    nuevoAtaqueDelEnemigo.innerHTML = indexAtaqueEnemigo
 
     ataquesDelJugador.appendChild(nuevoAtaqueDelJugador)
     ataquesDelEnemigo.appendChild(nuevoAtaqueDelEnemigo)
