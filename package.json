@@ -1,0 +1,26 @@
+{
+  "name": "platzi-mokepon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielravelo/platzi-mokepon.git"
+  },
+  "keywords": [
+    "html",
+    "css",
+    "js",
+    "backend",
+    "frontend"
+  ],
+  "author": "gabriel ravelo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielravelo/platzi-mokepon/issues"
+  },
+  "homepage": "https://github.com/gabrielravelo/platzi-mokepon#readme"
+}
